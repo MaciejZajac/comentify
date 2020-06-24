@@ -1,4 +1,6 @@
 const express = require('express');
+const { check, body } = require('express-validator');
+const User = require('../models/User');
 const router = express.Router();
 const authController = require('../controllers/authController');
 
@@ -15,10 +17,6 @@ router.post(
                 });
             })
             .normalizeEmail(),
-        body('password', 'Please enter a password')
-            .isLength({ min: 4 })
-            .isAlphanumeric()
-            .trim(),
         body('nickName', 'Enter a unique nickname').custom((value, { req }) => {
             return User.findOne({ nickName: value }).then((userDoc) => {
                 if (userDoc) {
@@ -28,7 +26,11 @@ router.post(
                 }
             });
         }),
-        body('confirmPassword')
+        body('password', 'Please enter a password')
+            .isLength({ min: 4 })
+            .isAlphanumeric()
+            .trim(),
+        body('repeatPassword')
             .custom((value, { req }) => {
                 if (value !== req.body.password) {
                     throw new Error('Password have to match!');
@@ -37,5 +39,7 @@ router.post(
             })
             .trim(),
     ],
-    authController.signup
+    authController.signin
 );
+
+module.exports = router;

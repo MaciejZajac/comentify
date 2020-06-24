@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import Axios from 'axios';
 
 const StyledContainer = styled.div`
     max-width: 1200px;
@@ -41,9 +42,20 @@ const StyledButton = styled.button`
     border-radius: 15px;
 `;
 
-export default function Login() {
+export default function SignIn() {
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = (data) => console.log('Data', data);
+    const onSubmit = async (data) => {
+        try {
+            const response = await Axios.post(
+                'http://localhost:5000/api/auth/signin',
+                data
+            );
+            const json = await response.json();
+            console.log('json', json);
+        } catch (err) {
+            console.log('err', err);
+        }
+    };
 
     return (
         <StyledContainer>

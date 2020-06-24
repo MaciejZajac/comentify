@@ -7,7 +7,8 @@ import Layout from './components/HOC/Layout';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import NotFound from './components/NotFound';
 import Home from './components/Home/Home';
-import Login from './components/Login/Login';
+import Login from './components/Auth/Login';
+import SignIn from './components/Auth/SignIn';
 
 function App() {
     const [theme, toggleTheme, componentMounted] = useDarkMode();
@@ -25,6 +26,7 @@ function App() {
                     <Route exact path='/' component={Home} />
                     <Redirect from='/your-article' to='/' />
                     <Route exact path='/login' component={Login} />
+                    <Route exact path='/signin' component={SignIn} />
                     <Route component={NotFound} />
                 </Switch>
             </Layout>

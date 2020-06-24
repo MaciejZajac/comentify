@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
+// const keys = require('../config/keys');
 const { validationResult } = require('express-validator');
 
 exports.signin = async (req, res, next) => {
@@ -13,11 +13,11 @@ exports.signin = async (req, res, next) => {
         throw error;
     }
 
-    const { email, password, confirmPassword } = req.body;
+    const { email, nickName, password } = req.body;
 
     try {
         const hashedPass = await bcrypt.hash(password, 12);
-        const user = new User({ email, password: hashedPass });
+        const user = new User({ email, nickName, password: hashedPass });
         const createUser = await user.save();
 
         res.status(201).json({
