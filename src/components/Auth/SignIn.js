@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import Axios from 'axios';
-
+import Arrow from 'react-feather/dist/icons/arrow-right';
+import { StyledButton, StyledHeader } from '../StyledComponents';
 const StyledContainer = styled.div`
     max-width: 1200px;
     margin: 0 auto;
@@ -31,17 +32,6 @@ const StyledInput = styled.input`
     transition: all 0.25s linear;
 `;
 
-const StyledButton = styled.button`
-    background: linear-gradient(150deg, #0b4f6c, #0b4f6ca1);
-    color: #fff;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    border-radius: 15px;
-`;
-
 export default function SignIn() {
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = async (data) => {
@@ -59,7 +49,7 @@ export default function SignIn() {
 
     return (
         <StyledContainer>
-            <h1>Create free account</h1>
+            <StyledHeader>Create free account</StyledHeader>
             <StyledForm onSubmit={handleSubmit(onSubmit)}>
                 <StyledInput
                     error={errors.email}
@@ -102,7 +92,9 @@ export default function SignIn() {
                 {console.log('errors', errors)}
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                <StyledButton type='submit'>Create an Account</StyledButton>
+                <StyledButton type='submit'>
+                    Create an Account <Arrow />
+                </StyledButton>
             </StyledForm>
         </StyledContainer>
     );

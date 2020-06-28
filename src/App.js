@@ -9,6 +9,7 @@ import NotFound from './components/NotFound';
 import Home from './components/Home/Home';
 import Login from './components/Auth/Login';
 import SignIn from './components/Auth/SignIn';
+import ForgotPassword from './components/Auth/ForgotPassword';
 
 function App() {
     const [theme, toggleTheme, componentMounted] = useDarkMode();
@@ -27,6 +28,11 @@ function App() {
                     <Redirect from='/your-article' to='/' />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/signin' component={SignIn} />
+                    <Route
+                        exact
+                        path='/forgot-password'
+                        component={ForgotPassword}
+                    />
                     <Route component={NotFound} />
                 </Switch>
             </Layout>

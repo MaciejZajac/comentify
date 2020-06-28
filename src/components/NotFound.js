@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'react-feather';
 
 const NotFoundComp = styled.div`
     font-size: 60px;
@@ -17,12 +19,21 @@ const Paragraph = styled.p`
     margin: 0 auto;
     text-align: center;
 `;
+const StyledLink = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 
 export default function NotFound() {
     return (
         <div>
             <NotFoundComp>404</NotFoundComp>
             <Paragraph>This page do not exist!</Paragraph>
+            <StyledLink to='/'>
+                <ArrowLeft />
+                Take me back to home page{' '}
+            </StyledLink>
         </div>
     );
 }
