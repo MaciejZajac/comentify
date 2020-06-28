@@ -8,6 +8,8 @@ import {
     StyledForm,
     StyledInput,
 } from '../StyledComponents';
+import { ArrowRight } from 'react-feather';
+import Axios from 'axios';
 
 const StyledContainer = styled.div`
     max-width: 1200px;
@@ -17,7 +19,18 @@ const StyledContainer = styled.div`
 
 export default function Login() {
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = (data) => console.log('Data', data);
+    const onSubmit = async (data) => {
+        try {
+            const response = await Axios.post(
+                'http://localhost:5000/api/auth/login',
+                data
+            );
+            const json = await response.json();
+            console.log('json', json);
+        } catch (err) {
+            console.log('err', err);
+        }
+    };
 
     return (
         <StyledContainer>
@@ -46,7 +59,10 @@ export default function Login() {
                     ref={register({ required: true })}
                 />
 
-                <StyledButton type='submit'>Create an Account</StyledButton>
+                <StyledButton type='submit'>
+                    Log in
+                    <ArrowRight />
+                </StyledButton>
                 <Link to='/signin'>Do not have an account yet?</Link>
                 <Link to='/forgot-password'>Forgot your password?</Link>
             </StyledForm>

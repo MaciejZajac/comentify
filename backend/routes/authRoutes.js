@@ -42,4 +42,16 @@ router.post(
     authController.signin
 );
 
+router.post(
+    '/login',
+    [
+        check('email').isEmail().normalizeEmail(),
+        body('password', 'Please enter a password')
+            .isLength({ min: 4 })
+            .isAlphanumeric()
+            .trim(),
+    ],
+    authController.login
+);
+
 module.exports = router;

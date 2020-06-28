@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'react-feather';
-import { SingleOpinion } from '../Opinion/SingleOpinion';
+import { Opinions } from '../Opinion/Opinions';
 
 const StyledHome = styled.div`
     max-width: 1200px;
@@ -43,7 +43,7 @@ export default function Home() {
             </StyledLink>
             <div>
                 <StyledHeader small>Most recent opinions:</StyledHeader>
-                <SingleOpinion />
+                <Opinions />
             </div>
         </StyledHome>
     );

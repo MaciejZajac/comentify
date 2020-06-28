@@ -1,16 +1,21 @@
 import React from 'react';
-
-export function SingleOpinion() {
+import styled from 'styled-components';
+const StyledArticle = styled.article`
+    max-width: 600px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    line-height: 1.5;
+    border-radius: 15px;
+    margin-bottom: 20px;
+`;
+export function SingleOpinion({ data }) {
+    const { author, text } = data;
     return (
-        <article>
-            <h4>Angela wrote:</h4>
+        <StyledArticle>
+            <h4>{author} wrote:</h4>
             <div>
-                <p>
-                    People who force others into listening to the music by
-                    driving a car with windows wide opened and the volume 100%
-                    on - why do you do that?
-                </p>
+                <p>{text}</p>
             </div>
-        </article>
+        </StyledArticle>
     );
 }
