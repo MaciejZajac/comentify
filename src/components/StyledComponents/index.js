@@ -1,5 +1,5 @@
 import { StyledButton } from './StyledButton';
 import { StyledHeader } from './StyledHeader';
-import { StyledForm, StyledInput } from './StyledForm';
+import { StyledForm, StyledInput, StyledTextArea } from './StyledForm';
 
-export { StyledButton, StyledHeader, StyledForm, StyledInput };
+export { StyledButton, StyledHeader, StyledForm, StyledInput, StyledTextArea };

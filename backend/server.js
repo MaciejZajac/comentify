@@ -1,17 +1,15 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
+const opinionRoutes = require('./routes/opinionRoutes');
+const app = express();
+app.use(express.json());
 
 mongoose.connect(keys.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
-
-const app = express();
-
-app.use(bodyParser.json());
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -33,9 +31,9 @@ app.use((req, res, next) => {
 // app.use(isAuth);
 
 // ściezki autoryzacji
-app.use('/api/auth', authRoutes);
+// app.use('/api/auth', authRoutes);
+app.use('/opinions', opinionRoutes);
 
-// wywalenie 500
 app.use((error, req, res, next) => {
     const status = error.statusCode || 500;
     const message = error.message;

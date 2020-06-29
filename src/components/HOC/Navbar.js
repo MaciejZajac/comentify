@@ -53,9 +53,9 @@ export default function Navbar({ theme, toggleTheme }) {
             <StyledLogo to='/'>Commentify</StyledLogo>
             <>
                 <Menu>
-                    <StyledLink to='/your-article'>Write</StyledLink>
-                    <StyledLink to='/login'>Log in</StyledLink>
-                    <StyledLink to='/signin'>Register</StyledLink>
+                    <StyledLink to='/your-opinion'>Write</StyledLink>
+                    {/* <StyledLink to='/login'>Log in</StyledLink>
+                    <StyledLink to='/signin'>Register</StyledLink> */}
                     <Toggle theme={theme} toggleTheme={toggleTheme} />
                 </Menu>
             </>

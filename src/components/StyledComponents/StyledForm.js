@@ -21,3 +21,15 @@ export const StyledInput = styled.input`
 `};
     transition: all 0.25s linear;
 `;
+
+export const StyledTextArea = styled.textarea`
+    border: 1px solid white;
+    padding: 20px;
+    ${({ error }) =>
+        error &&
+        `
+    border-color: red;
+    box-shadow: 0 0 2px red;
+`};
+    transition: all 0.25s linear;
+`;

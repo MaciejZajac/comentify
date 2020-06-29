@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'react-feather';
 import { Opinions } from '../Opinion/Opinions';
+import Axios from 'axios';
 
 const StyledHome = styled.div`
     max-width: 1200px;
@@ -32,6 +33,21 @@ const StyledLink = styled(Link)`
 `;
 
 export default function Home() {
+    const [opinionsArr, setOpinionsArr] = useState([]);
+    useEffect(() => {
+        async function getOpionsArr() {
+            try {
+                const response = await Axios.get(
+                    'http://localhost:5000/opinions/all'
+                );
+                setOpinionsArr(response.data);
+            } catch (err) {
+                console.log('err', err);
+            }
+        }
+        getOpionsArr();
+    }, []);
+
     return (
         <StyledHome>
             <StyledHeader>
@@ -43,7 +59,7 @@ export default function Home() {
             </StyledLink>
             <div>
                 <StyledHeader small>Most recent opinions:</StyledHeader>
-                <Opinions />
+                <Opinions opinions={opinionsArr} />
             </div>
         </StyledHome>
     );

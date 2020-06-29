@@ -28,10 +28,11 @@ const OpinionsContainer = styled.div`
     margin: 10px 0;
 `;
 
-export function Opinions() {
+export function Opinions({ opinions }) {
+    console.log('opinions', opinions);
     return (
         <OpinionsContainer>
-            {opinionList.map((item) => (
+            {opinions.map((item) => (
                 <SingleOpinion key={item.id} data={item} />
             ))}
         </OpinionsContainer>
