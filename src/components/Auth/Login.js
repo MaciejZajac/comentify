@@ -26,7 +26,6 @@ export default function Login() {
                 data
             );
             const json = await response.json();
-            console.log('json', json);
         } catch (err) {
             console.log('err', err);
         }

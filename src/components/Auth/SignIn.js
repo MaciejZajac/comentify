@@ -41,7 +41,6 @@ export default function SignIn() {
                 data
             );
             const json = await response.json();
-            console.log('json', json);
         } catch (err) {
             console.log('err', err);
         }
@@ -89,7 +88,6 @@ export default function SignIn() {
                     placeholder='Repeat password'
                     ref={register({ required: true })}
                 />
-                {console.log('errors', errors)}
                 {errors.exampleRequired && <span>This field is required</span>}
 
                 <StyledButton type='submit'>

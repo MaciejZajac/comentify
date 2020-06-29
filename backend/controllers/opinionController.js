@@ -18,7 +18,6 @@ exports.addOpinion = (req, res, next) => {
 };
 
 exports.getOpinions = (req, res, next) => {
-    console.log('lol');
     Opinion.find()
         .then((opinions) => res.json(opinions))
         .catch((err) => res.status(400).json('Error: ' + err));

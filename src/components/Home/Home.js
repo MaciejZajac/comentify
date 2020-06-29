@@ -53,7 +53,7 @@ export default function Home() {
             <StyledHeader>
                 Leave your opinion being sure it will not be censored
             </StyledHeader>
-            <StyledLink to='/login'>
+            <StyledLink to='/your-opinion'>
                 I want to write my opinion too!
                 <ArrowRight size={60} />
             </StyledLink>

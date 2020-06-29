@@ -9,6 +9,7 @@
         "axios": "^0.19.2",
         "concurrently": "^5.2.0",
         "express-validator": "^6.6.0",
+        "moment": "^2.27.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-feather": "^2.0.8",

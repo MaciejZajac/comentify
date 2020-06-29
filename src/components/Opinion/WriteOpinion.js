@@ -21,7 +21,6 @@ export default function WriteOpinion() {
                 'http://localhost:5000/opinions/add',
                 data
             );
-            console.log('response', response);
             setIsLoading(false);
         } catch (err) {
             console.log('err', err);

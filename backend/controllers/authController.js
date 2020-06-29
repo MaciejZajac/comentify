@@ -34,7 +34,6 @@ exports.signin = async (req, res, next) => {
 
 exports.login = (req, res, next) => {
     const errors = validationResult(req);
-    console.log('errors', errors);
     if (!errors.isEmpty()) {
         const error = new Error('Validation failed.');
         error.statusCode = 422;
